@@ -1,8 +1,3 @@
---[[
-Encrypted by Hackers House
-Tool : https://hackershouse.tech/online-lua-obfuscator-free-unlimited
-Version: 1.1.0
-]]
 _G["T_Y_nP4a3"]=function(src)
   local box={__src=src}
   return setmetatable({}, {
