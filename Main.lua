@@ -57,8 +57,12 @@ end
 -- 3. DEVICE + DATABASE FUNCTIONS
 ------------------------------------------------
 
+------------------------------------------------
+-- 3. DEVICE + DATABASE FUNCTIONS
+------------------------------------------------
+
 local function getDevice()
-    return "GG_DEVICE_" .. tostring(os.time())
+    return gg.getDevice() or "unknown_device"
 end
 
 local function getDB()
@@ -70,14 +74,16 @@ local function getDB()
         return nil
     end
 
-    local raw = res.content
+    local ok, data = pcall(function()
+        return load("return " .. res.content)()
+    end)
 
-    if not string.find(raw, "documents") then
-        gg.alert("❌ Invalid server response")
+    if not ok then
+        gg.alert("❌ Parse error")
         return nil
     end
 
-    return raw
+    return data.documents
 end
 
 
@@ -107,18 +113,28 @@ end
 
 local function checkKey(inputKey)
 
-    local res = getDB()
-    if not res then return false end
+    local docs = getDB()
+    if not docs then return false end
 
-    if string.find(res, inputKey) then
-        gg.toast("✅ VIP Key Valid")
-        return true
+    for _, doc in ipairs(docs) do
+
+        local fields = doc.fields
+
+        if fields then
+
+            local key = fields.key and fields.key.stringValue
+
+            if key == inputKey then
+                gg.toast("✅ VIP Key Valid")
+                return true
+            end
+
+        end
     end
 
-    gg.alert("❌ Invalid Key")
+    gg.alert("❌ Invalid Premium Key")
     return false
 end
-
 ------------------------------------------------
 -- 5. LOGIN GATE (NEXT PART)
 ------------------------------------------------
