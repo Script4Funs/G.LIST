@@ -19,7 +19,7 @@ local GAME_ICON = "🔸"
 -- GAME DATABASE
 
 local FREE_GAMES = { 
-    { name = "Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/Mob%20Rush.lua" }, 
+    { name = "Soccer Battle", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Soccer%20Battle.lua" }, 
     { name = "Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" }, 
     { name = "Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" } 
 }
