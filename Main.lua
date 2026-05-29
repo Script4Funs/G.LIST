@@ -12,132 +12,9 @@ end
 
 -- APP INFO
 
-local APP = {
-    NAME = "GameHub X",
-    VERSION = "909.2",
-    DEVELOPER = "Script4Fun"
-}
+local APP = { NAME = "GameHub X", VERSION = "909.2", DEVELOPER = "Script4Fun" }
 
 local GAME_ICON = "🔸"
-
-local function getDevice()
-    return io.popen("settings get secure android_id"):read("*l")
-end
-
-local function getDB()
-    local url = "https://firestore.googleapis.com/v1/projects/gamehub-x/databases/(default)/documents/keys"
-    local res = gg.makeRequest(url)
-
-    if not res or not res.content then
-        gg.alert("❌ No connection")
-        return nil
-    end
-
-    local raw = res.content
-
-    if not string.find(raw, "documents") then
-        gg.alert("❌ Invalid server response")
-        return nil
-    end
-
-    return raw
-end
-
-
-
--- 2. UTILITIES
-local function toast() end
-local function header()
-    return "Ⓜ️ • Application: " .. (APP.NAME or "GameHub X") .. "\n" ..
-           "✳️ • Version: " .. (APP.VERSION or "1.0") .. "\n" ..
-           "👤 • Owner: " .. (APP.DEVELOPER or "Unknown")
-end
-
-------------------------------------------------
--- 3. DEVICE + DATABASE FUNCTIONS
-------------------------------------------------
-
-------------------------------------------------
--- 3. DEVICE + DATABASE FUNCTIONS
-------------------------------------------------
-
-local function getDevice()
-    return gg.getDevice() or "unknown_device"
-end
-
-local function getDB()
-    local url = "https://firestore.googleapis.com/v1/projects/gamehub-x/databases/(default)/documents/keys"
-    local res = gg.makeRequest(url)
-
-    if not res or not res.content then
-        gg.alert("❌ No connection")
-        return nil
-    end
-
-    local ok, data = pcall(function()
-        return load("return " .. res.content)()
-    end)
-
-    if not ok then
-        gg.alert("❌ Parse error")
-        return nil
-    end
-
-    return data.documents
-end
-
-
--- APP INFO
--- UTILITIES
-
--- getDevice()
--- getDB()
-
--- checkKey()
-
-------------------------------------------------
--- 🔑 LOGIN GATE (ITO YUNG CODE MO)
-------------------------------------------------
-
-local function requirePremiumAccess()
-
-    local input = gg.prompt({"💎 Enter Premium Key:"}, {""}, {"text"})
-    if not input then return false end
-
-    return checkKey(input[1])
-end
-
-------------------------------------------------
--- 4. 🔐 VIP CHECK FUNCTION (DITO ILALAGAY MO)
-------------------------------------------------
-
-local function checkKey(inputKey)
-
-    local docs = getDB()
-    if not docs then return false end
-
-    for _, doc in ipairs(docs) do
-
-        local fields = doc.fields
-
-        if fields then
-
-            local key = fields.key and fields.key.stringValue
-
-            if key == inputKey then
-                gg.toast("✅ VIP Key Valid")
-                return true
-            end
-
-        end
-    end
-
-    gg.alert("❌ Invalid Premium Key")
-    return false
-end
-------------------------------------------------
--- 5. LOGIN GATE (NEXT PART)
-------------------------------------------------
 
 -- GAME DATABASE
 
@@ -172,13 +49,14 @@ table.sort(ALL_GAMES, function(a, b) return string.lower(a.name) < string.lower(
 
 -- UTILITIES
 
-toast(APP.NAME or "GameHub X")
+local function toast(msg) gg.toast(msg) end
 
 local function header() 
     return "Ⓜ️ • Application: " .. APP.NAME .. "\n" ..
            "✳️ • Version: " .. APP.VERSION .. "\n" ..
            "👤 • Owner: " .. APP.DEVELOPER 
 end
+
 -- LOAD SCRIPT
 
 function loadScript(url, name)
@@ -275,18 +153,7 @@ function openGameMenu(gameList)
         openGameMenu(gameList)
 
     elseif sub == 2 then
-
-    if gameType == "Premium" then
-        local input = gg.prompt({"💎 Enter Premium Key:"}, {""}, {"text"})
-        if not input then return end
-
-        if not checkKey(input[1]) then
-            gg.alert("❌ Invalid Premium Key")
-            return
-        end
-    end
-
-    loadScript(game.script, game.name)
+        loadScript(game.script, game.name)
 
     elseif sub == 3 then
         openGameMenu(gameList)
@@ -376,58 +243,33 @@ function searchGame()
         return mainMenu()
 
     elseif sub == 2 then
-
-    if gameType == "Premium" then
-        local input = gg.prompt({"💎 Enter Premium Key:"}, {""}, {"text"})
-        if not input then return end
-
-        if not checkKey(input[1]) then
-            gg.alert("❌ Invalid Premium Key")
-            return
-        end
-    end
-
-    loadScript(game.script, game.name)
+        loadScript(game.script, game.name)
 
     elseif sub == 3 then
         return mainMenu()
     end
 end
 
-------------------------------------------------
--- MAIN MENU (ILALAGAY SA PINAKA TAAS)
-------------------------------------------------
-function mainMenu()
+-- MAIN MENU
 
+function mainMenu()
     local m = gg.choice({
         "🔎: Search Game",
         "📑: All Games",
         "🎫: Free Games",
         "🎟️: Premium Games",
         "E X I T"
-    }, nil, "GameHub X")
+    }, nil, header())
 
-    if m == 1 then
-        searchGame()
-
-    elseif m == 2 then
-        openGameMenu(ALL_GAMES)
-
-    elseif m == 3 then
-        openGameMenu(FREE_GAMES)
-
-    elseif m == 4 then
-        openGameMenu(PREMIUM_GAMES)
-
-    elseif m == 5 then
-        os.exit()
+    if m == 1 then searchGame()
+    elseif m == 2 then openGameMenu(ALL_GAMES)
+    elseif m == 3 then openGameMenu(FREE_GAMES)
+    elseif m == 4 then openGameMenu(PREMIUM_GAMES)
+    elseif m == 5 then os.exit()
     end
 end
 
-
--- =========================
--- START FLOW (LAST PART)
--- =========================
+-- START
 
 toast(APP.NAME)
 gg.sleep(800)
@@ -440,4 +282,4 @@ while true do
         mainMenu() 
     end 
     gg.sleep(100) 
-end 
+end
