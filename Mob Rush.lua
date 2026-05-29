@@ -1,3 +1,25 @@
+--=========================
+-- GET TARGET APP INFO
+--=========================
+local info = gg.getTargetInfo()
+local pkg = info.packageName
+local arch = info.x64 and "ARM64" or "ARM32"
+
+--=========================
+-- PACKAGE VALIDATION
+--=========================
+local requiredPackage = "com.soulgames.lunaph"
+
+if pkg ~= requiredPackage then
+    gg.alert(
+        "❌ INVALID GAME PACKAGE:"..
+        "\n\n📦 Required Package:"..
+        "\n"..requiredPackage..
+        "\n\n⚠️ Please launch the correct game before running the script.",
+        "EXIT"
+    )
+    return
+end
 
 --=========================
 -- SET LIBRARY NAME
