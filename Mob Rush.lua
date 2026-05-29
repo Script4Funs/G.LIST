@@ -24,7 +24,7 @@ end
 --=========================
 -- SET LIBRARY NAME
 --=========================
-local libNameSo = "liblogic.so"
+local libNameSo = "libil2cpp.so"
 --=========================
 -- SIMPLE XOR ENCRYPT FUNCTION
 --=========================
