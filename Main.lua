@@ -31,6 +31,7 @@ local PREMIUM_GAMES = {
     { name = "Battle Guys", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Battle%20Guys.lua" }, 
     { name = "Luna M Ph", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.LunaM%20Ph.lua" }, 
     { name = "Forward Assault", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Forward%20Assault.lua" },     
+    { name = "Grim Soul", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Grim%20Soul.lua" },         
     { name = "Mob Rush", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Mob%20Rush.lua" } 
 }
 
