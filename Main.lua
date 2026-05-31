@@ -12,7 +12,7 @@ end
 
 -- APP INFO
 
-local APP = { NAME = "GameHub X", VERSION = "909.2", DEVELOPER = "Script4Fun" }
+local APP = { NAME = "GameHub X", VERSION = "909.2", DEVELOPER = "@Script4Fun" }
 
 local GAME_ICON = "🔸"
 
@@ -20,8 +20,14 @@ local GAME_ICON = "🔸"
 
 local FREE_GAMES = { 
     { name = "Soccer Battle", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Soccer%20Battle.lua" }, 
-    { name = "Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" }, 
-    { name = "Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" } 
+    { name = "Let's Go Rain", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Let's%20Go%20Rain.lua" }, 
+    { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
+    { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
+    { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
+    { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
+    { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
+    { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
+    { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" }    
 }
 
 local PREMIUM_GAMES = { 
@@ -139,7 +145,7 @@ function openGameMenu(gameList)
         "⚙️ HOW TO USE:\n" ..
         "- Open the loader\n" ..
         "- Select your desired script\n" ..
-        "- Wait for injection process\n" ..
+        "- Wait for prepairing process\n" ..
         "- Enjoy the features\n\n" ..
         "⚠️ DISCLAIMER:\n" ..
         "- Use responsibly at your own risk.\n" ..
