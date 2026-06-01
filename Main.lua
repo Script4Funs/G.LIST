@@ -21,7 +21,7 @@ local GAME_ICON = "🔸"
 local FREE_GAMES = { 
     { name = "Soccer Battle", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Soccer%20Battle.lua" }, 
     { name = "Let's Go Rain", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Let's%20Go%20Rain.lua" }, 
-    { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
+    { name = "Mask Gun", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Mask%20Gun.lua" },
     { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
     { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
     { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
