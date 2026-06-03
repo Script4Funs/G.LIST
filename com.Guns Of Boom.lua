@@ -474,19 +474,19 @@ function headHitBoxSize()
     if hitboxs == 1 then
       hitt = off
       box[1].value = "1.25"
-      toast = gg.toast('Normal ENABLED 🔵 🔵')
+      toast = gg.toast('Normal ENABLED 🔵')
     elseif hitboxs == 2 then
       hitt = on
       box[1].value = "3.25"
-      toast = gg.toast('Balanced ENABLED 🔵 🔵')
+      toast = gg.toast('Balanced ENABLED 🔵')
     elseif hitboxs == 3 then
       hitt = on
       box[1].value = "7.25"
-      toast = gg.toast('Aggressive ENABLED 🔵 🔵')
+      toast = gg.toast('Aggressive ENABLED 🔵')
     elseif hitboxs == 4 then
       hitt = on
       box[1].value = "15.25"
-      toast = gg.toast('Extreme ENABLED 🔵 🔵')
+      toast = gg.toast('Extreme ENABLED 🔵')
     end
     gg.clearResults()
     gg.setValues(box)
@@ -524,8 +524,17 @@ cameraLockF()
 loopAdmin = 0
 function adminPanel()
   if instructionSetArchitecture == 64 then
-    gg.toast('♻️ Processing… Ready')
-    gg.sleep(500)
+    gg.alert(
+    "🔒 FEATURE NOT SUPPORTED" ..
+    "\n\n⚙️ Admin Panel Compatibility Check Failed." ..
+    "\n\n📋 Requirement:" ..
+    "\n• 32-bit Game Version" ..
+    "\n\n📊 Detected Environment:" ..
+    "\n• 64-bit Architecture" ..
+    "\n\n❌ For stability and compatibility reasons, this feature has been disabled on 64-bit builds." ..
+    "\n\n💡 Switch to the 32-bit APK to enable Admin Panel functionality.",
+    "UNDERSTOOD"
+)
     pane = off
   else 
     -- START: this code only runs once
@@ -538,10 +547,10 @@ function adminPanel()
     else
       if pane == on then
         pan[1].value = '0'
-        toast = gg.toast('Admin Panel ENABLED 🔵 🔵')
+        toast = gg.toast('Admin Panel ENABLED 🔵')
       else
         pan[1].value = '1'
-        toast = gg.toast('Admin Panel DISABLED 🔴 🔴')
+        toast = gg.toast('Admin Panel DISABLED 🔴')
       end
       gg.setValues(pan)
     end
@@ -638,7 +647,6 @@ function bulletFractionInc()
     
     damg = gg.getValues(damg)
     gg.clearResults()
-    gg.toast('damage ready')
   else
     if damge == on then
       damg[1].value = '2'
@@ -670,7 +678,8 @@ function ammoHolderInc()
       v.flags = gg.TYPE_DOUBLE
     end
     gg.clearResults()
-    gg.toast('ammo ready')
+    gg.toast('♻️ Processing… Ready')
+    gg.sleep(500)
   else
   if magz == on then
     ammoClip[1].value = '1000'
@@ -749,7 +758,6 @@ end
 
 boolsOff()
 
--- 🔵 GIANT MODE SYSTEM (PASTE HERE)
 giants = off
 giantReady = false
 
@@ -770,7 +778,7 @@ local results = gg.getResults(100)
 gg.clearResults()
 
 if results == nil or #results < 5 then
-    gg.toast("❌ Scan Unstable - Retry")
+    gg.alert("🔧 Player Height Not Totally Active\n\nPossible reasons:\n• Not inside a match\n• Match is still loading\n• Values not initialized yet\n\nPlease enter a match and activate again.")
     giantReady = false
     return
 end
@@ -906,7 +914,7 @@ function weaponTableMenu()
 local weaponMenu = gg.multiChoice(
 {
 'Double Damage',
-'5000K Ammo',
+'5K Ammo',
 'Auto Fire',
 'High Aim Assist',
 'Recoil Control',
@@ -1032,14 +1040,29 @@ function safeStart()
   running = false
 end
 
--- START ONCE
-safeStart()
+-- DITO NAGSISIMULA ANG BAGONG CODE
+-- Auto popup after scan
+local MENU = gg.choice(
+{
+    "📝 GUNS OF BOOM MENU",
+    "❌ EXIT"
+},
+nil,
+"👤 • Owner: @Script4Fun\n👁️‍🗨️ • GameScripts: Premium"
+)
 
--- MAIN LOOP
+if MENU == nil or MENU == 2 then
+    os.exit()
+end
+
+START()
+
+-- Reopen menu using GG icon
 while true do
-  if gg.isVisible() then
-    gg.setVisible(false)
-    safeStart()
-  end
-  gg.sleep(200)
+    if gg.isVisible(true) then
+        gg.setVisible(false)
+        safeStart()
+    end
+
+    gg.sleep(200)
 end
