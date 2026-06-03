@@ -1,3 +1,9 @@
+--=========================
+-- GG CHECK
+--=========================
+if gg.PACKAGE ~= "com.Script4FunGG.Dev" then
+    return
+end
 
 if gg.isVisible() then
   gg.setVisible(false)
@@ -277,13 +283,16 @@ function assemblyAddressCheck()
 
 if assembly == nil or #assembly == 0 then
     gg.alert(
-        "❌ Assembly Address Not Found!\n\n" ..
-        "Possible causes:\n" ..
-        "• Game updated\n" ..
-        "• Wrong game package\n" ..
-        "• Metadata search failed"
-    )
-    os.exit()
+    "❌ Feature Activation Failed\n\n" ..
+    "Unable to locate the required assembly address.\n\n" ..
+    "Requirements:\n" ..
+    "✓ Correct game process selected\n" ..
+    "✓ Player is in the game lobby\n" ..
+    "✓ Game resources fully loaded\n\n" ..
+    "Please verify the requirements above and try again.\n\n" ..
+    "If the problem continues, an update to the script may be required."
+)
+os.exit()
 end
 
 gg.clearResults()
@@ -1040,15 +1049,13 @@ function safeStart()
   running = false
 end
 
--- DITO NAGSISIMULA ANG BAGONG CODE
--- Auto popup after scan
 local MENU = gg.choice(
 {
     "📝 GUNS OF BOOM MENU",
     "❌ EXIT"
 },
 nil,
-"👤 • Owner: @Script4Fun\n👁️‍🗨️ • GameScripts: Premium"
+"👤 • Owner: @Script4Fun\n👁️‍🗨️ • GameScripts: Free"
 )
 
 if MENU == nil or MENU == 2 then
