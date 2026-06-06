@@ -143,6 +143,51 @@ local function extractDate(data, field)
 return data:match('"' .. field .. '"%s*:%s*"([^"]+)"')
 end
 --=========================
+-- SERVER TIME
+--=========================
+local function parseServerDate(dateStr)
+local pattern = "(%a+), (%d+) (%a+) (%d+) (%d+):(%d+):(%d+) GMT"
+local _, day, monthStr, year, hour, min, sec =
+dateStr:match(pattern)
+if not day then
+return nil
+end
+local months = {
+Jan=1, Feb=2, Mar=3, Apr=4, May=5, Jun=6,
+Jul=7, Aug=8, Sep=9, Oct=10, Nov=11, Dec=12
+}
+return os.time({
+year = tonumber(year),
+month = months[monthStr],
+day = tonumber(day),
+hour = tonumber(hour),
+min = tonumber(min),
+sec = tonumber(sec)
+})
+end
+local function getServerDate()
+local urls = {
+"http://www.google.com",
+"http://www.cloudflare.com",
+"http://www.bing.com"
+}
+for _, url in ipairs(urls) do
+local res = gg.makeRequest(url)
+if res and res.headers and res.headers["Date"] then
+local dateHeader = res.headers["Date"]
+if type(dateHeader) == "table" then
+dateHeader = dateHeader[1]
+end
+local t = parseServerDate(dateHeader)
+if t then
+return os.date("%Y-%m-%d", t)
+end
+end
+end
+
+return nil
+end
+--=========================
 -- AUTO BIND DEVICE
 --=========================
 local function bindDeviceToKey(key, deviceId)
@@ -247,7 +292,18 @@ end
 --=========================
 -- EXPIRY CHECK
 --=========================
-if expire and os.date("%Y-%m-%d") > expire then
+local serverDate = getServerDate()
+
+if not serverDate then
+gg.alert(
+"🌐 SERVER TIME ERROR\n\n" ..
+"Unable to verify server time.\n" ..
+"Please check your internet connection."
+)
+return false
+end
+
+if expire and serverDate > expire then
 os.remove(SAVE_FILE)
 alertExpired(expire)
 return false
