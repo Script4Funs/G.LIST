@@ -370,15 +370,15 @@ end
 -- LOAD SCRIPT
 --=========================
 function loadScript(url, name)
-gg.toast("⚙️ Preparing " .. name .. "...")
+gg.toast("⚙️ Preparing " .. name)
 local res = gg.makeRequest(url)
 if not res or not res.content then
-gg.alert("❌ Script Load Failed\n\n⚠️ Unable to load the selected script.\nPlease check your connection or try again later.")
+gg.alert("❌ Failed to load \"" .. name .. "\"\n\n⚠️ Please try again later.")
 return
 end
-local func, err = load(res.content)
+local func = load(res.content)
 if not func then
-gg.alert("Error:\n"..err)
+gg.alert("❌ Script Load Failed\n\nPlease try again.")
 return
 end
 pcall(func)
