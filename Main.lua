@@ -370,40 +370,17 @@ end
 -- LOAD SCRIPT
 --=========================
 function loadScript(url, name)
-
-local loading = true
-
--- animated preparing toast
-local function animate()
-    local dots = ""
-    while loading do
-        dots = dots .. "."
-        if #dots > 3 then dots = "" end
-        gg.toast("⚙️ Preparing " .. name .. dots)
-        gg.sleep(400)
-    end
-end
-
-gg.thread(animate)
-
-local res = gg.makeRequest(url)
-
-loading = false
-
-if not res or not res.content then
-    gg.alert("❌ Script Load Failed\n\n⚠️ Unable to load the selected script.\nPlease check your connection or try again later.")
-    return
-end
-
 gg.toast("⚙️ Preparing " .. name .. "...")
-
-local func, err = load(res.content)
-
-if not func then
-    gg.alert("Error:\n" .. err)
-    return
+local res = gg.makeRequest(url)
+if not res or not res.content then
+gg.alert("❌ Script Load Failed\n\n⚠️ Unable to load the selected script.\nPlease check your connection or try again later.")
+return
 end
-
+local func, err = load(res.content)
+if not func then
+gg.alert("Error:\n"..err)
+return
+end
 pcall(func)
 end
 --=========================
