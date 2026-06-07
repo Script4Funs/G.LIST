@@ -370,17 +370,40 @@ end
 -- LOAD SCRIPT
 --=========================
 function loadScript(url, name)
-gg.toast("⚙️ Preparing " .. name .. "...")
+
+local loading = true
+
+-- animated preparing toast
+local function animate()
+    local dots = ""
+    while loading do
+        dots = dots .. "."
+        if #dots > 3 then dots = "" end
+        gg.toast("⚙️ Preparing " .. name .. dots)
+        gg.sleep(400)
+    end
+end
+
+gg.thread(animate)
+
 local res = gg.makeRequest(url)
+
+loading = false
+
 if not res or not res.content then
-gg.alert("❌ Script Load Failed\n\n⚠️ Unable to load the selected script.\nPlease check your connection or try again later.")
-return
+    gg.alert("❌ Script Load Failed\n\n⚠️ Unable to load the selected script.\nPlease check your connection or try again later.")
+    return
 end
+
+gg.toast("⚙️ Preparing " .. name .. "...")
+
 local func, err = load(res.content)
+
 if not func then
-gg.alert("Error:\n"..err)
-return
+    gg.alert("Error:\n" .. err)
+    return
 end
+
 pcall(func)
 end
 --=========================
@@ -483,7 +506,7 @@ table.insert(map, i)
 end
 end
 if #list == 0 then
-gg.alert("🔎 SEARCH COMPLETED\n\n❌ GAME NOT FOUND IN LIST\n\n⚠️ The game you are searching for is not yet available in the GameHub database.\n\n📌 You can:\n- Select another supported game\n- Wait for future updates\n- Contact developer to request it\n\n🚀 New games are added regularly.")
+gg.alert("🔎 SEARCH COMPLETED\n\n❌ GAME NOT FOUND IN LIST\n\n⚠️ The game you are searching for is not yet available in the GameHub X database.\n\n📌 You can:\n- Select another supported game\n- Wait for future updates\n- Contact developer to request it\n\n🚀 New games are added regularly.")
 return mainMenu()
 end
 table.insert(list, "B A C K")
