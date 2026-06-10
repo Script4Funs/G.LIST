@@ -342,7 +342,8 @@ local PREMIUM_GAMES = {
 { name = "Luna M Ph", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.LunaM%20Ph.lua" }, 
 { name = "Forward Assault", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Forward%20Assault.lua" },     
 { name = "Grim Soul", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Grim%20Soul.lua" },
-{ name = "Castle Defense Online", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Castle%20Defense%20Online.lua" },       
+{ name = "Castle Defense Online", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Castle%20Defense%20Online.lua" },
+{ name = "Kuboom", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Kuboom.lua" },    
 { name = "Mob Rush", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Mob%20Rush.lua" } 
 }
 --=========================
