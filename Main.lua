@@ -371,6 +371,16 @@ end
 -- LOAD SCRIPT
 --=========================
 function loadScript(url, name)
+gg.alert(
+"📢 SYSTEM NOTICE\n\n" ..
+"The selected module is now being prepared.\n\n" ..
+"• Loading duration varies depending on the number of features.\n" ..
+"• Additional initialization may be required before the menu appears.\n" ..
+"• Do not close SCRIPT4FUN GG during the loading process.\n" ..
+"• Avoid repeatedly pressing START while loading is in progress.\n" ..
+"• Multiple START requests may result in duplicate game selection dialogs or loading conflicts.\n\n" ..
+"Thank you for your patience."
+)
 gg.toast("⚙️ Preparing " .. name)
 local res = gg.makeRequest(url)
 if not res or not res.content then
@@ -436,7 +446,7 @@ gg.alert("📌 ABOUT THIS GAME:\n\n" ..
 "⚙️ HOW TO USE:\n" ..
 "- Open the loader\n" ..
 "- Select your desired script\n" ..
-"- Wait for prepairing process\n" ..
+"- Wait for preparing process\n" ..
 "- Enjoy the features\n\n" ..
 "⚠️ DISCLAIMER:\n" ..
 "- Use responsibly at your own risk.\n" ..
