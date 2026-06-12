@@ -328,7 +328,7 @@ local FREE_GAMES = {
 { name = "Mask Gun", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Mask%20Gun.lua" },
 { name = "Idle Hunter: Eternal Soul", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Idle%20Hunter_%20Eternal%20Soul.lua" },
 { name = "Guns Of Boom", version = "Auto Update", script = "https://arquivosadminscript.mmmods.com/UpLoadScriptUser/com.Guns%20Of%20Boom104093.html" },
-{ name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
+{ name = "Counter Attack", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Counter%20Attack.lua" },
 { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
 { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
 { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" }    
