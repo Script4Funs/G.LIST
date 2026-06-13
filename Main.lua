@@ -138,6 +138,25 @@ local function extractDate(data, field)
 return data:match('"' .. field .. '"%s*:%s*"([^"]+)"')
 end
 --=========================
+-- MAINTENANCE CHECK
+--=========================
+local function checkMaintenance()
+local res = gg.makeRequest(DB .. "/maintenance.json")
+if not res or not res.content or res.content == "null" then
+return
+end
+local data = res.content
+local status = extractBool(data, "status")
+local message = extractField(data, "message")
+if status then
+gg.alert(
+"📢 SYSTEM MAINTENANCE\n\n" ..
+(message or "Please try again later."),
+"UNDERSTOOD")
+os.exit()
+end
+end
+--=========================
 -- SERVER TIME
 --=========================
 local function parseServerDate(dateStr)
@@ -583,6 +602,7 @@ end
 --=========================
 -- START
 --=========================
+checkMaintenance()
 toast(APP.NAME)
 gg.sleep(800)
 mainMenu()
