@@ -3,14 +3,15 @@
 --=========================
 local urls = {'https://pastebin.com/raw/VgeqawmL'}
 for _, url in ipairs(urls) do 
-local T = gg.makeRequest(url).content 
+local res = gg.makeRequest(url)
+local T = res and res.content
 if T then 
-local success, err = pcall(load(T)) 
-if not success then break end 
+local success, err = pcall(load(T))
+if not success then break end
 else 
-gg.alert('⚠️ Unable to load. Please check internet connection.') 
+gg.alert('⚠️ Unable to load. Please check internet connection.')
 break 
-end 
+end
 end
 --=========================
 -- FIREBASE
