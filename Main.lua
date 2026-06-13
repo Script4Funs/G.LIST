@@ -18,6 +18,16 @@ end
 local DB = "https://system-keys-default-rtdb.asia-southeast1.firebasedatabase.app"
 local SAVE_FILE = gg.EXT_FILES_DIR .. "/NeuralInvocationAdaptationProcessingFramework.arsc"
 --=========================
+-- CONFIG SYSTEM
+--=========================
+local function getConfig()
+local res = gg.makeRequest(DB .. "/config.json")
+if not res or not res.content then
+return nil
+end
+return res.content
+end
+--=========================
 -- LOAD SAVED KEY
 --=========================
 local savedKey = ""
@@ -582,13 +592,32 @@ end
 --=========================
 -- START
 --=========================
+local cfg = getConfig()
+if cfg then
+local announcement = extractField(cfg, "announcement")
+if announcement and announcement ~= "" then
+gg.alert(
+"📢 ANNOUNCEMENT\n\n" ..
+announcement
+)
+end
+local maintenance = extractBool(cfg, "maintenance")
+if maintenance then
+gg.alert(
+"🛠️ SYSTEM MAINTENANCE\n\n" ..
+"GameHub X is currently under maintenance.\n\n" ..
+"Please try again later."
+)
+os.exit()
+end
+end
 toast(APP.NAME)
 gg.sleep(800)
 mainMenu()
-while true do 
-if gg.isVisible(true) then 
-gg.setVisible(false) 
-mainMenu() 
-end 
-gg.sleep(100) 
+while true do
+if gg.isVisible(true) then
+gg.setVisible(false)
+mainMenu()
+end
+gg.sleep(100)
 end
