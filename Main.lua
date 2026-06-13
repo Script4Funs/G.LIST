@@ -342,7 +342,6 @@ local FREE_GAMES = {
 { name = "Mask Gun", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Mask%20Gun.lua" },
 { name = "Idle Hunter: Eternal Soul", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Idle%20Hunter_%20Eternal%20Soul.lua" },
 { name = "Guns Of Boom", version = "Auto Update", script = "https://arquivosadminscript.mmmods.com/UpLoadScriptUser/com.Guns%20Of%20Boom104093.html" },
-{ name = "Counter Attack", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Counter%20Attack.lua" },
 { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
 { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" },
 { name = "Coming Soon", version = "Auto Update", script = "https://raw.githubusercontent.com/USERNAME/REPO/main/codm.lua" }    
@@ -357,7 +356,8 @@ local PREMIUM_GAMES = {
 { name = "Forward Assault", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Forward%20Assault.lua" },     
 { name = "Grim Soul", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Grim%20Soul.lua" },
 { name = "Castle Defense Online", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Castle%20Defense%20Online.lua" },
-{ name = "Kuboom", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Kuboom.lua" },    
+{ name = "Kuboom", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Kuboom.lua" },
+{ name = "Counter Attack", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Counter%20Attack.lua" },
 { name = "Mob Rush", version = "Auto Update", script = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/com.Mob%20Rush.lua" } 
 }
 --=========================
