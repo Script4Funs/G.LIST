@@ -1,13 +1,4 @@
 --=========================
--- MENU INITIALIZATION
---=========================
-::GET_READY::
-gg.setVisible(false)
-for i = 20, 100, 20 do
-gg.sleep(300)
-gg.toast(i .. "%")
-end
---=========================
 -- TARGET INFO & ARCH SETUP
 --=========================
 local ti = gg.getTargetInfo()
