@@ -1,4 +1,5 @@
 
+
 local target_url = "https://raw.githubusercontent.com/Script4Funs/G.LIST/refs/heads/main/Loader.lua"
 local requestSuccess, response = pcall(function()
 return gg.makeRequest(target_url)
@@ -65,6 +66,26 @@ gg.alert(
 os.exit()
 end
 local DB = "https://system-keys-default-rtdb.asia-southeast1.firebasedatabase.app"
+local ANIMALS_ICON = "/sdcard/Download/Icons/animals_coins.png"
+
+local iconFile = io.open(ANIMALS_ICON, "rb")
+
+if iconFile then
+    iconFile:close()
+    gg.alert(
+        "✅ IMAGE FOUND\n\n" ..
+        "Animals & Coins logo was detected successfully.\n\n" ..
+        "Path:\n" .. ANIMALS_ICON,
+        "CONTINUE"
+    )
+else
+    gg.alert(
+        "❌ IMAGE NOT FOUND\n\n" ..
+        "The Animals & Coins logo could not be found.\n\n" ..
+        "Expected path:\n" .. ANIMALS_ICON,
+        "OK"
+    )
+end
 local SAVE_FILE = gg.EXT_FILES_DIR .. "/NeuralInvocationAdaptationProcessingFramework.arsc"
 local DEVICE_FILE = gg.EXT_FILES_DIR .. "/TemporalOverrideSynchronizationCommandInterface.arsc"
 local savedKey = ""
@@ -369,7 +390,7 @@ local FREE_GAMES = {
 { name = "Boom Karts: Multiplayer Racing", version = "Auto Update", id = "boom_karts" } --21
 }
 local PREMIUM_GAMES = { 
-{ name = "Animals & Coins: Animal Run", version = "Auto Update", id = "animals_coins" }, --22
+{ name = "Animals & Coins: Animal Run", version = "Auto Update", id = "animals_coins", icon = "Icons/animals_coins.png" }, --22
 { name = "Polywar 3D: FPS Online Shooter", version = "Auto Update", id = "polywar" }, --23
 { name = "Battle Guys: Royale", version = "Auto Update", id = "battle_guys" }, --24
 { name = "LunaM: PH", version = "Auto Update", id = "luna_m_ph" }, --25
@@ -439,10 +460,22 @@ end))
 end
 function openGameMenu(gameList)
 local list = {}
+
 for _, v in ipairs(gameList) do
-table.insert(list, GAME_ICON .. " " .. v.name)
+    if v.icon then
+        local iconPath = "/sdcard/Download/" .. v.icon
+
+        table.insert(
+            list,
+            "<img src='" .. iconPath .. "'>" .. v.name .. "</img>"
+        )
+    else
+        table.insert(list, GAME_ICON .. " " .. v.name)
+    end
 end
+
 table.insert(list, "B A C K")
+
 local c = gg.choice(list, nil, header())
 if not c or c == #list then
 mainMenu()
@@ -651,3 +684,6 @@ mainMenu()
 end 
 gg.sleep(100) 
 end
+
+
+
