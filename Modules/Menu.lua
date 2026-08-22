@@ -80,8 +80,7 @@ announcement,
 end
 
 
-checkMaintenance()
-checkAnnouncement()
+
 local function checkArchitecture()
 local info = gg.getTargetInfo()
 if not info.x64 then
