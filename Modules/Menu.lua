@@ -93,15 +93,3 @@ gg.alert(
 os.exit()
 end
 end
-
-checkArchitecture()
-toast(APP.NAME)
-gg.sleep(800)
-while true do 
-if gg.isVisible(true) then 
-gg.setVisible(false) 
-mainMenu() 
-end 
-gg.sleep(100) 
-end
-
