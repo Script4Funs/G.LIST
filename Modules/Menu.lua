@@ -79,6 +79,7 @@ announcement,
 )
 end
 
+local function checkArchitecture()
 local info = gg.getTargetInfo()
 if not info.x64 then
 gg.alert(
