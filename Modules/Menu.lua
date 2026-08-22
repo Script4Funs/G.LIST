@@ -79,3 +79,28 @@ announcement,
 )
 end
 
+local info = gg.getTargetInfo()
+if not info.x64 then
+gg.alert(
+"⚠️ UNSUPPORTED GAME ARCHITECTURE\n\n" ..
+"This game is running on an unsupported architecture.\n\n" ..
+"• 📱 Detected: 32-bit\n" ..
+"• ⚙️ Required: 64-bit (ARM64)\n" ..
+"• 🔒 Status: Access Unavailable\n\n" ..
+"Please install or launch the 64-bit version of the game before continuing.",
+"O K A Y")
+os.exit()
+end
+end
+
+checkArchitecture()
+toast(APP.NAME)
+gg.sleep(800)
+while true do 
+if gg.isVisible(true) then 
+gg.setVisible(false) 
+mainMenu() 
+end 
+gg.sleep(100) 
+end
+
